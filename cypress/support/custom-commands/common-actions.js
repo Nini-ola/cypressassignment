@@ -1,5 +1,5 @@
-Cypress.Commands.add('clickSpecifiedElement', (element) => {
-    cy.contains(element).should('be.visible').and('exist').click()
+Cypress.Commands.add('clickSpecifiedElement', () => {
+    cy.contains('Upload File Demo').should('be.visible').and('exist').click()
 })
 
 Cypress.Commands.add('jpgUpload', (element) => {
@@ -14,11 +14,10 @@ Cypress.Commands.add('pngUpload', (element) => {
     cy.get('input[type="file"]').should('exist').selectFile('cypress/fixtures/example.png')
 })
 
-Cypress.Commands.add('demoUpload', (element) => {
-    cy.contains('Upload File Demo').should('be.visible').click()
+Cypress.Commands.add('verifyUpload', (element) => {
+    cy.contains('File Successfully Uploaded').should('be.visible')
 })
 
 Cypress.Commands.add('uploadFile', (file) => {
     cy.get('input[type="file"]').should('exist').selectFile(file)
-    cy.contains('File Successfully Uploaded').should('be.visible')
 } )

@@ -25,5 +25,4 @@ beforeEach(()=>{
         return false
     })
     cy.visit('/')
-    cy.demoUpload()
 })

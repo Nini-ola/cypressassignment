@@ -1,48 +1,30 @@
-describe('file upload', () => {
-  it('successful file upload of png', () => {
-    cy.uploadFile('cypress/fixtures/example.png')
-  })
-
-  it('successful file upload of pdf', () => {
-    cy.uploadFile('cypress/fixtures/example.pdf')
-  })
-
-  it('successful file upload of jpg', () => {
-    cy.uploadFile('cypress/fixtures/example.jpg')
-  })
-
-})
-
+import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor'
 // describe('file upload', () => {
 //   it('successful file upload of png', () => {
-//     cy.contains('Upload File Demo').should('be.visible').click()
-//     cy.get('input[type="file"]').should('exist').selectFile('cypress/fixtures/example.png')
-//     cy.contains('File Successfully Uploaded').should('be.visible')
+//     cy.uploadFile('cypress/fixtures/example.png')
 //   })
 
 //   it('successful file upload of pdf', () => {
-//     cy.contains('Upload File Demo').should('be.visible').click()
-//     cy.get('input[type="file"]').should('exist').selectFile('cypress/fixtures/example.png')
-//     cy.contains('File Successfully Uploaded').should('be.visible')
+//     cy.uploadFile('cypress/fixtures/example.pdf')
 //   })
 
 //   it('successful file upload of jpg', () => {
-//     cy.contains('Upload File Demo').should('be.visible').click()
-//     cy.get('input[type="file"]').should('exist').selectFile('cypress/fixtures/example.png')
-//     cy.contains('File Successfully Uploaded').should('be.visible')
+//     cy.uploadFile('cypress/fixtures/example.jpg')
 //   })
 
 // })
 
 
-// Given(/^I click "([^"]*)"$/, (element) => {
-// 	cy.clickSpecifiedElement(element)
-// });
 
-// When(/^I select the <file formats> for upload$/, () => {
-// 	return true;
-// });
 
-// When(/^I select the <file formats> for upload$/, () => {
-// 	return true;
-// });
+Given(/^I click file upload Demo$/, () => {
+	cy.clickSpecifiedElement()
+});
+
+When(/^I upload the "([^"]*)"$/, (file) => {
+	cy.uploadFile(`cypress/fixtures/example${file}`)
+});
+
+Then(/^the file upload should be successful$/, () => {
+	cy.verifyUpload()
+});

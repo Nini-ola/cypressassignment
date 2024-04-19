@@ -15,6 +15,7 @@ async function setupNodeEvents(on, config) {
 module.exports = defineConfig({
   e2e: {
     baseUrl: 'https://www.lambdatest.com/selenium-playground/',
+    specPattern: '**/*.feature',
     setupNodeEvents,
     },
   },
